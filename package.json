@@ -1,13 +1,42 @@
 {
   "name": "orbit",
   "version": "1.0.0",
-  "description": "",
+  "description": "Orbit is a unified project management and CRM platform built for modern developers, freelancers, and agencies who need complete clarity across project execution and client acquisition. It combines project tracking, GitHub-based development visibility, and lead management into a single clean interface. Designed to eliminate decision fatigue, Orbit helps users prioritize tasks, manage client relationships, track leads from outreach to conversion, and make data-driven decisions every day.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": {
+    "name": "Akashdeep Singh",
+    "email": "akashdalla406@gmail.com",
+    "phone": "+917814002784"
   },
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "project management",
+    "crm",
+    "lead management",
+    "developer tools",
+    "agency tools",
+    "github integration",
+    "task management",
+    "productivity",
+    "saas",
+    "nextjs"
+  ],
+  
+  "contributors": [],
   "license": "ISC",
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.0",
+  "motive": "The goal of Orbit is to create a decision-making system that removes daily confusion for developers and agency owners by providing clear priorities, structured workflows, and complete visibility into projects and leads. It is built to help users start their day with clarity, focus on what matters most, and scale their business with confidence.",
+  "homepage": "https://soon-coming",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akashmahlaz/Orbit"
+  },
+  "bugs": {
+    "url": "https://github.com/akashmahlaz/Orbit/issues"
+  }
 }
