@@ -1,0 +1,96 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
+const spring = { type: "spring" as const, stiffness: 100, damping: 20 };
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.4,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: spring,
+  },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] as const },
+  },
+};
+
+export default function Hero() {
+  return (
+    <section className="relative isolate w-full min-h-0 flex-1 overflow-hidden bg-zinc-950">
+      {/* ── Video Background ── */}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        className="absolute inset-0 z-0 "
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover"
+          style={{ willChange: "transform" }}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
+
+      {/* ── Bottom content ── */}
+      <div className="relative z-10 flex h-full flex-col justify-end">
+        <div className="max-w-7xl mx-auto w-full px-6 pb-14 md:px-10 md:pb-20">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between"
+          >
+            <div>
+              <motion.h1
+                variants={fadeUp}
+                className="text-3xl font-bold tracking-tighter leading-[0.95] text-white md:text-5xl lg:text-6xl"
+              >
+                Ship projects. <span className="text-orange-400">Close deals.</span>
+              </motion.h1>
+              <motion.p
+                variants={fadeUp}
+                className="mt-3 max-w-[44ch] text-sm text-white/50 md:text-base"
+              >
+                Project tracking, CRM, and GitHub visibility — one workspace.
+              </motion.p>
+            </div>
+
+            <motion.div variants={fadeUp} className="shrink-0">
+              <button className="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-400 active:scale-[0.98] active:-translate-y-px">
+                Get Started
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Bottom fade into page */}
+        <div className="h-20 w-full bg-linear-to-t from-background to-transparent" />
+      </div>
+    </section>
+  );
+}
