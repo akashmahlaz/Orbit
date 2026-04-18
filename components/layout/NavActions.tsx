@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import type { Route } from "next"
+import { signIn } from "next-auth/react"
 import { ArrowRight } from "lucide-react"
 
 export function NavActions({ isLoggedIn }: { isLoggedIn: boolean }) {
@@ -21,19 +22,19 @@ export function NavActions({ isLoggedIn }: { isLoggedIn: boolean }) {
 
   return (
     <div className="hidden items-center gap-3 md:flex">
-      <Link
-        href="/api/auth/signin"
+      <button
+        onClick={() => signIn("google", { redirectTo: "/dashboard" })}
         className="text-[13px] font-medium text-neutral-500 transition-colors hover:text-neutral-900"
       >
         Log in
-      </Link>
-      <Link
-        href="/api/auth/signin"
+      </button>
+      <button
+        onClick={() => signIn("google", { redirectTo: "/dashboard" })}
         className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-neutral-700"
       >
         Get started
         <ArrowRight className="size-3.5" />
-      </Link>
+      </button>
     </div>
   )
 }

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import type { Route } from "next"
+import { signIn } from "next-auth/react"
 import { Menu, X, ArrowRight } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import { OrbitLogo } from "./OrbitLogo"
@@ -91,21 +92,19 @@ export function MobileNav({ isLoggedIn }: { isLoggedIn: boolean }) {
                   </Link>
                 ) : (
                   <>
-                    <Link
-                      href="/api/auth/signin"
-                      onClick={() => setOpen(false)}
+                    <button
+                      onClick={() => { setOpen(false); signIn("google", { redirectTo: "/dashboard" }) }}
                       className="flex w-full items-center justify-center gap-2 rounded-full bg-neutral-900 px-5 py-3.5 text-[15px] font-semibold text-white transition-colors active:bg-neutral-700"
                     >
                       Get started
                       <ArrowRight className="size-4" />
-                    </Link>
-                    <Link
-                      href="/api/auth/signin"
-                      onClick={() => setOpen(false)}
+                    </button>
+                    <button
+                      onClick={() => { setOpen(false); signIn("google", { redirectTo: "/dashboard" }) }}
                       className="w-full rounded-full border border-neutral-200 px-5 py-3.5 text-center text-[15px] font-semibold text-neutral-700 transition-colors active:bg-neutral-50"
                     >
                       Log in
-                    </Link>
+                    </button>
                   </>
                 )}
               </div>
