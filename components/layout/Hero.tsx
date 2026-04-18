@@ -1,93 +1,85 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-
-const spring = { type: "spring" as const, stiffness: 100, damping: 20 };
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.14,
-      delayChildren: 0.4,
-    },
-  },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: spring,
-  },
-};
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
+﻿import Link from "next/link"
+import type { Route } from "next"
+import { ArrowRight } from "lucide-react"
+import { BlurFade } from "@/components/ui/blur-fade"
 
 export default function Hero() {
   return (
-    <section className="relative isolate w-full min-h-0 flex-1 overflow-hidden bg-zinc-950">
-      {/* ── Video Background ── */}
-      <motion.div
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-        className="absolute inset-0 z-0 "
-      >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="h-full w-full object-cover"
-          style={{ willChange: "transform" }}
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-      </motion.div>
+    <section className="relative flex min-h-[92vh] w-full flex-col items-center justify-center overflow-hidden bg-white px-6 pt-20 pb-24">
+      {/* Faint radial glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[40%] h-125 w-175 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, #bfdbfe 0%, #dbeafe 40%, transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
 
-      {/* ── Right-bottom content ── */}
-      <div className="relative z-10 flex h-full items-end justify-end">
-        <div className="w-full max-w-xl px-6 pb-28 md:px-10 md:pb-36 md:pr-16 lg:pr-24">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col items-end gap-5 text-right"
-          >
-            <div>
-              <motion.h1
-                variants={fadeUp}
-                className="text-3xl font-bold tracking-tighter leading-[0.95] text-white md:text-5xl lg:text-6xl"
-              >
-                Ship projects. <br /><span className="text-orange-400">Close deals.</span>
-              </motion.h1>
-              <motion.p
-                variants={fadeUp}
-                className="mt-3 ml-auto max-w-[44ch] text-sm text-white/50 md:text-base"
-              >
-                Project tracking, CRM, and GitHub visibility — one workspace.
-              </motion.p>
-            </div>
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-8 text-center">
+        {/* Badge */}
+        <BlurFade inView delay={0}>
+          <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-1.5 shadow-sm">
+            <span className="size-1.5 animate-pulse rounded-full bg-emerald-500" />
+            <span className="text-[12px] font-semibold tracking-wide text-neutral-600">
+              Now in Beta - Start building today
+            </span>
+          </div>
+        </BlurFade>
 
-            <motion.div variants={fadeUp}>
-              <button className="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-400 active:scale-[0.98] active:-translate-y-px">
-                Get Started
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-              </button>
-            </motion.div>
-          </motion.div>
-        </div>
+        {/* Headline */}
+        <BlurFade inView delay={0.08}>
+          <h1 className="max-w-[18ch] text-[52px] font-black leading-[1.04] tracking-[-0.04em] text-neutral-900 sm:text-[68px] md:text-[80px] lg:text-[92px]">
+            Ship projects.{" "}
+            <span className="text-blue-500">Close deals.</span>
+          </h1>
+        </BlurFade>
+
+        {/* Subtitle */}
+        <BlurFade inView delay={0.14}>
+          <p className="max-w-[52ch] text-balance text-[16px] leading-[1.75] text-neutral-500 sm:text-[18px]">
+            {"Project tracking, CRM, and GitHub visibility \u2014 one workspace for developers, freelancers, and agencies."}
+          </p>
+        </BlurFade>
+
+        {/* CTA */}
+        <BlurFade inView delay={0.2}>
+          <div className="flex flex-col items-center gap-4 sm:flex-row">
+            <Link
+              href={"/dashboard" as Route}
+              className="group inline-flex items-center gap-3 rounded-full bg-neutral-900 px-7 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-neutral-900/20 transition-all duration-300 hover:bg-neutral-700 hover:shadow-neutral-900/30 active:scale-[0.97]"
+            >
+              Get Started
+              <span className="flex size-5 items-center justify-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
+                <ArrowRight className="size-3" />
+              </span>
+            </Link>
+            <Link
+              href="#features"
+              className="text-[14px] font-medium text-neutral-400 transition-colors hover:text-neutral-700"
+            >
+              {"See how it works \u2192"}
+            </Link>
+          </div>
+        </BlurFade>
+
+        {/* Social proof strip */}
+        <BlurFade inView delay={0.26}>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] font-medium text-neutral-400">
+            <span className="flex items-center gap-1.5">
+              <span className="size-1.5 rounded-full bg-green-500" />
+              {"Project & Lead tracking"}
+            </span>
+            <span className="hidden h-3 w-px bg-neutral-200 sm:block" />
+            <span>GitHub integration</span>
+            <span className="hidden h-3 w-px bg-neutral-200 sm:block" />
+            <span>Pipeline analytics</span>
+            <span className="hidden h-3 w-px bg-neutral-200 sm:block" />
+            <span>Free to start</span>
+          </div>
+        </BlurFade>
       </div>
     </section>
-  );
+  )
 }

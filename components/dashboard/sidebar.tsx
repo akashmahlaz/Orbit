@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import type { Route } from "next"
 import { usePathname } from "next/navigation"
 import {
   LayoutDashboard,
@@ -42,7 +43,7 @@ export function DashboardSidebar({ user }: { user: { name?: string | null; email
           return (
             <Link
               key={item.href}
-              href={item.href}
+              href={item.href as Route}
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                 isActive
