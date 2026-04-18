@@ -55,41 +55,38 @@ export default function Hero() {
         </video>
       </motion.div>
 
-      {/* ── Bottom content ── */}
-      <div className="relative z-10 flex h-full flex-col justify-end">
-        <div className="max-w-7xl mx-auto w-full px-6 pb-14 md:px-10 md:pb-20">
+      {/* ── Right-bottom content ── */}
+      <div className="relative z-10 flex h-full items-end justify-end">
+        <div className="w-full max-w-xl px-6 pb-28 md:px-10 md:pb-36 md:pr-16 lg:pr-24">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between"
+            className="flex flex-col items-end gap-5 text-right"
           >
             <div>
               <motion.h1
                 variants={fadeUp}
                 className="text-3xl font-bold tracking-tighter leading-[0.95] text-white md:text-5xl lg:text-6xl"
               >
-                Ship projects. <span className="text-orange-400">Close deals.</span>
+                Ship projects. <br /><span className="text-orange-400">Close deals.</span>
               </motion.h1>
               <motion.p
                 variants={fadeUp}
-                className="mt-3 max-w-[44ch] text-sm text-white/50 md:text-base"
+                className="mt-3 ml-auto max-w-[44ch] text-sm text-white/50 md:text-base"
               >
                 Project tracking, CRM, and GitHub visibility — one workspace.
               </motion.p>
             </div>
 
-            <motion.div variants={fadeUp} className="shrink-0">
+            <motion.div variants={fadeUp}>
               <button className="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-400 active:scale-[0.98] active:-translate-y-px">
                 Get Started
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
               </button>
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Bottom fade into page */}
-        <div className="h-20 w-full bg-linear-to-t from-background to-transparent" />
       </div>
     </section>
   );

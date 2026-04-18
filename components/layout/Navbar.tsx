@@ -4,26 +4,26 @@ import { ArrowRight } from "lucide-react";
 
 export default function Navbar(){
     return(
-        <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-between">
-                <div className="flex gap-2 p-2 items-center">
-                    <Image src={"/Logo.png"} alt="Brilion" height={100} width={100} className="h-10 w-10 rounded-xl"/>
-                    <div className="h-12 p-2">
-                        <h1 className="font-bold text-2xl tracking-wider">Obitz<span className="text-emerald-500">STACK</span></h1>
-                    </div>
+        <nav className="w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+            <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-6">
+                <div className="flex items-center gap-2">
+                    <Image src={"/Logo.png"} alt="Orbit" height={40} width={40} className="size-9 rounded-xl"/>
+                    <span className="text-xl font-bold tracking-tight">Orbit</span>
                 </div>
-                <div className="flex gap-6">
-                    <Link href={"/"} className="p-2 hover:text-orange-600 transition">Home</Link>
-                    <Link href={"/"} className="p-2 hover:text-orange-600 transition">Solutions</Link>
-                    <Link href={"/"} className="p-2 hover:text-orange-600 transition">Services</Link>
-                    <Link href={"/"} className="p-2 hover:text-orange-600 transition">Docs</Link>
-                    <Link href={"/"} className="p-2 hover:text-orange-600 transition">Company</Link>
+                <div className="hidden md:flex items-center gap-1">
+                    <Link href={"/"} className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md">Home</Link>
+                    <Link href={"/"} className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md">Solutions</Link>
+                    <Link href={"/"} className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md">Services</Link>
+                    <Link href={"/"} className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md">Docs</Link>
+                    <Link href="/pricings" className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md">Pricing</Link>
                 </div>
-                <div className="flex gap-2">
-                    <button className="px-2 py-2 rounded-3xl font-semibold text-gray-600">Log in</button>
-                    <button className="bg-orange-600 px-4 py-2 rounded-4xl text-white font-semibold flex items-center ">Get Started <ArrowRight className="ml-1 w-4 h-4"/> </button>
+                <div className="flex items-center gap-3">
+                    <Link href="/api/auth/signin" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Log in</Link>
+                    <Link href="/api/auth/signin" className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
+                        Get Started <ArrowRight className="size-3.5" />
+                    </Link>
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }
